@@ -4,14 +4,19 @@
   "description": "pizza shop",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+"start": "node server.js",
+"server": "nodemon server.js"
   },
   "author": "pramodatre05@gmail.com",
   "license": "ISC",
   "dependencies": {
     "colores": "^1.0.1",
+    "concurrently": "^8.2.0",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongoose": "^7.3.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.1"
   }
 }
