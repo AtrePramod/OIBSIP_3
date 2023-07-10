@@ -1,6 +1,16 @@
 const express = require('express')
 const morgan = require('morgan')
 require('colores')
+const dotenv = require('dotenv')
+const connectDB = require('./config/config')
+
+
+//config dotenv
+dotenv.config()
+
+
+//connect mongoBD
+connectDB()
 
 const app = express()
 
@@ -12,7 +22,7 @@ app.use(morgan('dev'))
 app.get('/', (req, res) => {
     res.send("<h1>welcome Hello from node server</h1>")
 })
-
-app.listen(8080, () => {
-    console.log("Serever are running")
+const port = process.env.PORT || 8080
+app.listen(port, () => {
+    console.log(`Serever are running On ${process.env.NODE_ENV} mode on port no ${process.env.PORT}`)
 })
