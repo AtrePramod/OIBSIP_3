@@ -8,27 +8,27 @@ const ToolBar = () => {
     return (
         <>
             <Navbar bg="dark" varient="dark" expand="lg">
-                <Container fluid>
+                <Container fluid >
                     <h6 className='text-light'>
                         <MdLocalOffer className='text-warning' />&nbsp;&nbsp;
                         Free Home Delivery on Order Above 500/- Rupees</h6>
 
-                    <Nav className="ms-auto">
+                    <Nav className="ms-auto " >
 
                         <LinkContainer to="/" activeClassName>
-                            <Nav.Link>Home</Nav.Link>
+                            <Nav.Link className='text-light'>Home</Nav.Link>
                         </LinkContainer>
 
                         <LinkContainer to="/about" activeClassName>
-                            <Nav.Link>About</Nav.Link>
+                            <Nav.Link className='text-light'>About</Nav.Link>
                         </LinkContainer>
 
                         <LinkContainer to="/contact" activeClassName>
-                            <Nav.Link>Contact Us</Nav.Link>
+                            <Nav.Link className='text-light'>Contact Us</Nav.Link>
                         </LinkContainer>
 
                         <LinkContainer to="/policy" activeClassName>
-                            <Nav.Link>terms and policy</Nav.Link>
+                            <Nav.Link className='text-light'>terms and policy</Nav.Link>
                         </LinkContainer>
 
                     </Nav>
