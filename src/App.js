@@ -1,11 +1,14 @@
 import "./App.css";
-import { Container } from "react-bootstrap";
+import About from "./components/about";
 import ToolBar from "./components/toolbar";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
       <ToolBar />
+      <Switch>
+        <Route path="/about" component={About} exact />
+      </Switch>
     </BrowserRouter>
   );
 }
