@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
-import { Button, Card, Row, Col } from 'react-bootstrap'
-import { FaRupeeSign } from 'react-icons/fa'
+import { Button, Card, Row, Col, Modal } from 'react-bootstrap'
+import { FaRupeeSign, FaAudioDescription } from 'react-icons/fa'
+
 
 const Pizza = ({ pizza }) => {
     const [varient, setVaritent] = useState('small');
     const [qauantity, setQauantity] = useState(1);
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
     return (
         < >
-            <Card style={{ width: '18rem', marginTop: '20px' }}>
-                <Card.Img variant="top" src={pizza.image} />
+            <Card style={{ width: '18rem', marginTop: '20px', cursor: 'pointer' }}>
+                <Card.Img variant="top" src={pizza.image}
+                    onClick={handleShow} />
                 <Card.Body>
                     <Card.Title>{pizza.name}</Card.Title>
                     <Card.Text>
@@ -40,6 +49,25 @@ const Pizza = ({ pizza }) => {
                     </Row>
                 </Card.Body>
             </Card>
+            {/*model*/}
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>{pizza.name}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div>
+                        <Card.Img variant="top" src={pizza.image}
+                        />
+                    </div>
+                    <div>
+                        <h5><FaAudioDescription /></h5>
+                        <h6>
+                            {pizza.description}
+                        </h6>
+                    </div>
+                </Modal.Body>
+
+            </Modal>
         </>
     )
 }
