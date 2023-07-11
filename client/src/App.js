@@ -6,6 +6,7 @@ import Policy from "./components/Policy";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import HomeScreen from "./screens/HomeScreen";
+import CardScreen from "./screens/cardScreen";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <ToolBar />
       <NavBar />
       <Switch>
-
+        <Route path="/cart" component={CardScreen} exact />
         <Route path="/about" component={About} exact />
         <Route path="/contact" component={Contact} exact />
         <Route path="/policy" component={Policy} exact />

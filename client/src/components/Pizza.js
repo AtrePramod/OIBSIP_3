@@ -10,7 +10,9 @@ const Pizza = ({ pizza }) => {
     const [show, setShow] = useState(false);
 
     const dispatch = useDispatch()
-    const addToCardHandler = () => { dispatch(addToCard(pizza, qauantity, varient)) }
+    const addToCardHandler = () => {
+        dispatch(addToCard(pizza, qauantity, varient))
+    }
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
