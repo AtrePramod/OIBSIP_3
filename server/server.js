@@ -19,6 +19,13 @@ const app = express()
 app.use(express.json())
 app.use(morgan('dev'))
 
+
+//routes
+app.use("/api/pizzas", require("./routes/pizzaRoute"))
+
+
+
+
 app.get('/', (req, res) => {
     res.send("<h1>welcome Hello from node server</h1>")
 })

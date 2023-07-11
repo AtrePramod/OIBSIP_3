@@ -39,9 +39,9 @@ const pizzas = [
       },
     ],
     category: "veg",
+    image: "/images/veggie_paradise.jpg",
     description:
       "The awesome foursome! Golden corn, black olives, capsicum, red paprika",
-    image: "/images/veggie_paradise.jpg",
   },
   {
     name: "Chicken Golden Delight",

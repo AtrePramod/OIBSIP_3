@@ -1,12 +1,14 @@
-export const getAllPizzaReducer = (state = {}, action) => {
+export const getAllPizzaReducer = (state = { pizzas: [] }, action) => {
     switch (action.type) {
         case 'GET_PIZZAS_REQUEST':
             return {
-                ...state
+                ...state,
+                loading: true
             }
         case 'GET_PIZZAS_SUCCESS':
             return {
-                pizzas: action.payload
+                pizzas: action.payload,
+                loading: false
             }
         case 'GET_PIZZAS_FAIL':
             return {
