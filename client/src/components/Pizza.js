@@ -1,19 +1,23 @@
 import React, { useState } from 'react'
 import { Button, Card, Row, Col, Modal } from 'react-bootstrap'
 import { FaRupeeSign, FaAudioDescription } from 'react-icons/fa'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCard } from '../actions/cardAction'
 
 const Pizza = ({ pizza }) => {
     const [varient, setVaritent] = useState('small');
     const [qauantity, setQauantity] = useState(1);
-
     const [show, setShow] = useState(false);
+
+    const dispatch = useDispatch()
+    const addToCardHandler = () => { dispatch(addToCard(pizza, qauantity, varient)) }
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
 
     return (
+
         < >
             <Card style={{ width: '18rem', marginTop: '20px', cursor: 'pointer' }}>
                 <Card.Img variant="top" src={pizza.image}
@@ -44,7 +48,7 @@ const Pizza = ({ pizza }) => {
                     <Row>
                         <Col md={6}>Price : {pizza.prices[0][varient] * qauantity} <FaRupeeSign /></Col>
                         <Col md={6}>
-                            <Button className='bg-success text-white'>Add to cart</Button>
+                            <Button onClick={addToCardHandler} className='bg-success text-white'>Add to cart</Button>
                         </Col>
                     </Row>
                 </Card.Body>
