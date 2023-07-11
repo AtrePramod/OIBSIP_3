@@ -19,4 +19,4 @@ const pizzaSchema = mongoose.Schema({
 }, { timestamps: true });
 
 const pizzaModel = mongoose.model('pizza', pizzaSchema)
-module, exports = pizzaModel;
+module.exports = pizzaModel;

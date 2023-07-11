@@ -15,13 +15,13 @@ connectDB()
 
 const importData = async () => {
     try {
-        await Pizza.deleteMany()
-        const smapleData = Pizzas.map(pizza => { return { ...pizza } })
-        await Pizza.insertMany(smapleData)
+        await Pizza.deleteMany();
+        const smapleData = Pizzas.map(pizza => { return { ...pizza } });
+        await Pizza.insertMany(smapleData);
         console.log('Dta imported')
         process.exit()
     } catch (error) {
-        console.log(`${error}  is the error`)
+        console.log(`${error}  is the error pramod`)
         process.exit(1)
     }
 }
