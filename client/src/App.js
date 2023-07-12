@@ -7,6 +7,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import HomeScreen from "./screens/HomeScreen";
 import CardScreen from "./screens/cardScreen";
+import Register from "./screens/Register";
+import Login from "./screens/Login";
+
 
 function App() {
   return (
@@ -14,6 +17,8 @@ function App() {
       <ToolBar />
       <NavBar />
       <Switch>
+        <Route path="/login" component={Login} exact />
+        <Route path="/register" component={Register} exact />
         <Route path="/cart" component={CardScreen} exact />
         <Route path="/about" component={About} exact />
         <Route path="/contact" component={Contact} exact />
