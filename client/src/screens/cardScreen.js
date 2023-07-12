@@ -9,6 +9,7 @@ const CardScreen = () => {
     const cartState = useSelector(state => state.cartReducer)
     const cartItems = cartState.cartItems;
     const dispatch = useDispatch();
+    const subTotal = cartItems.reduce((x, item) => x + item.price, 0)
 
     return (
         <>
@@ -45,7 +46,11 @@ const CardScreen = () => {
                         }
                         </Row>
                     </Col>
-                    <Col md={2}><h1>Payment Info</h1> </Col>
+                    <Col md={2}>
+                        <h1>Payment Info</h1>
+                        <h4>Sub Total</h4>
+                        <h4>Rs : {subTotal} /-</h4>
+                    </Col>
                 </Row>
             </Container>
         </>
