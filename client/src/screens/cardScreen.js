@@ -1,8 +1,8 @@
 import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
-import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai'
-import { addToCard } from '../actions/cardAction'
+import { AiFillMinusCircle, AiFillPlusCircle, AiFillDelete } from 'react-icons/ai'
+import { addToCard, deleteFromCart } from '../actions/cardAction'
 
 
 const CardScreen = () => {
@@ -36,6 +36,8 @@ const CardScreen = () => {
                                     </Col>
                                     <Col md={5}>
                                         <img alt={item.name} src={item.image} style={{ width: '80px', height: '60px' }} />
+                                        <AiFillDelete className='text-danger' style={{ cursor: 'pointer' }}
+                                            onClick={() => { dispatch(deleteFromCart(item)); }} />
                                     </Col>
 
                                 </>

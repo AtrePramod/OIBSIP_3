@@ -4,13 +4,33 @@ export const addToCard = (pizza, quantity, varinet) => (dispatch, getState) => {
         _id: pizza._id,
         image: pizza.image,
         varinet: varinet,
-        quantity: quantity,
+        quantity: Number(quantity),
         prices: pizza.prices,
         price: pizza.prices[0][varinet] * quantity,
     };
-    dispatch({ type: "ADD_TO_CART", payload: cartItems });
-    console.log(getState().cartReducer.cartItems)
-    localStorage.setItem('cartItems',
-        JSON.stringify(getState().cartReducer.cartItems)
-    );
+
+    if (cartItems.quantity > 10) {
+        alert('You can only add 10 pizzas')
+    }
+    else {
+        if (cartItems.quantity < 1) {
+            dispatch({ type: 'DELETE_FROM_CART', payload: pizza })
+
+        }
+        else {
+            dispatch({ type: "ADD_TO_CART", payload: cartItems });
+            console.log(getState().cartReducer.cartItems)
+            localStorage.setItem('cartItems', JSON.stringify(getState().cartReducer.cartItems)
+            );
+        }
+    }
+
 };
+
+
+export const deleteFromCart = (pizza) => (dispatch, getState) => {
+    dispatch({ type: 'DELETE_FROM_CART', payload: pizza })
+    const cartItems = getState().cartReducer.cartItems;
+    localStorage.setItem('cartItems', JSON.stringify(cartItems))
+};
+
