@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Container, Col, Row, Button } from 'react-bootstrap';
+import { Form, Container, Button } from 'react-bootstrap';
 
 const Register = () => {
 
@@ -10,7 +10,7 @@ const Register = () => {
     const [address, SetAddress] = useState('');
 
     const registerhandler = () => {
-        if (password != cpass) {
+        if (password !== cpass) {
             alert("Both password are not match")
         }
         else {
