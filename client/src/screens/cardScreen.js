@@ -1,11 +1,14 @@
 import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai'
+import { addToCard } from '../actions/cardAction'
+
 
 const CardScreen = () => {
     const cartState = useSelector(state => state.cartReducer)
-    const cartItems = cartState.cartItems
+    const cartItems = cartState.cartItems;
+    const dispatch = useDispatch();
 
     return (
         <>
@@ -22,7 +25,14 @@ const CardScreen = () => {
                                         <h6>
                                             Price:{item.quantity}*{item.prices[0][item.varinet]}={" "}{item.price}
                                         </h6>
-                                        <h6>Quantity: &nbsp; <AiFillMinusCircle className='text-danger' />&nbsp;&nbsp; {item.quantity}&nbsp; &nbsp;<AiFillPlusCircle className='text-success' /></h6>
+                                        <h6>Quantity: &nbsp;
+                                            <AiFillMinusCircle className='text-danger' style={{ cursor: 'pointer' }}
+                                                onClick={() => { dispatch(addToCard(item, item.quantity - 1, item.varinet)); }}
+                                            />&nbsp;&nbsp;
+                                            {item.quantity}&nbsp; &nbsp;
+                                            <AiFillPlusCircle className='text-success' style={{ cursor: 'pointer' }}
+                                                onClick={() => { dispatch(addToCard(item, item.quantity + 1, item.varinet)); }}
+                                            /></h6 >
                                     </Col>
                                     <Col md={5}>
                                         <img alt={item.name} src={item.image} style={{ width: '80px', height: '60px' }} />
