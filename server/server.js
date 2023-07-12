@@ -22,6 +22,7 @@ app.use(morgan('dev'))
 
 //routes
 app.use("/api/pizzas", require("./routes/pizzaRoute"))
+app.use("/api/users", require("./routes/userRoute"))
 
 
 

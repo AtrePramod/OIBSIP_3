@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Container, Button } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux'
+import { registerUser } from '../actions/userAction'
+
 
 const Register = () => {
 
@@ -9,13 +12,24 @@ const Register = () => {
     const [cpass, SetCpass] = useState('');
     const [address, SetAddress] = useState('');
 
+    const dispatch = useDispatch();
+
     const registerhandler = () => {
-        if (password !== cpass) {
+        if (name === '' || email === '' || password === '' || cpass === '' || address === '') {
+            alert("please Enter the Data")
+        }
+        else if (password !== cpass) {
             alert("Both password are not match")
         }
         else {
             const user = { name, email, password, address }
-            console.log(user)
+            dispatch(registerUser(user));
+            SetName('')
+            SetEmail('')
+            SetPassword('')
+            SetCpass('')
+            SetAddress('')
+
         }
     }
     return (
