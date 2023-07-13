@@ -1,10 +1,13 @@
 import React from 'react'
-import { Container, Navbar, Nav, Image } from 'react-bootstrap';
+import { Container, Navbar, Nav, Image, Dropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../actions/userAction';
 const NavBar = () => {
     const dispatch = useDispatch()
     const cartState = useSelector(state => state.cartReducer)
+    const userState = useSelector(state => state.loginUserReducer)
+    const { currentUser } = userState
     return (
         <>
             <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
@@ -13,12 +16,34 @@ const NavBar = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
-                            <LinkContainer to="/login">
-                                <Nav.Link  >Login</Nav.Link>
-                            </LinkContainer>
-                            <LinkContainer to="/register">
-                                <Nav.Link  >Register</Nav.Link>
-                            </LinkContainer>
+                            {
+                                currentUser ? (
+                                    <>
+                                        {/* <Nav.Link  >{currentUser.name}</Nav.Link> */}
+                                        <Dropdown Dropdown >
+                                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                                {currentUser.name}
+                                            </Dropdown.Toggle>
+
+                                            <Dropdown.Menu>
+                                                <Dropdown.Item href="#/action-1">Order</Dropdown.Item>
+                                                <Dropdown.Item onClick={() => dispatch(logoutUser())}>Logout</Dropdown.Item>
+
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </>
+
+                                ) : (
+                                    <>
+                                        <LinkContainer to="/login">
+                                            <Nav.Link  >Login</Nav.Link>
+                                        </LinkContainer>
+                                        <LinkContainer to="/register">
+                                            <Nav.Link  >Register</Nav.Link>
+                                        </LinkContainer>
+                                    </>)
+                            }
+
                             <LinkContainer to="/cart">
                                 <Nav.Link  >Cart {cartState.cartItems.length}</Nav.Link>
 
@@ -28,7 +53,7 @@ const NavBar = () => {
 
                     </Navbar.Collapse>
                 </Container>
-            </Navbar>
+            </Navbar >
         </>
     )
 }

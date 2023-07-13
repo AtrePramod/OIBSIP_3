@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
-
 import { useDispatch, useSelector } from 'react-redux'
 import { Container, Row, Col } from 'react-bootstrap'
 import Pizza from '../components/Pizza'
 import { getAllPizzas } from '../actions/pizzaAction'
+import Loader from '../components/loader'
+import Error from '../components/Error'
 const HomeScreen = () => {
 
     const dispatch = useDispatch();
@@ -14,8 +15,9 @@ const HomeScreen = () => {
     return (
         <>
             <Container>
-                {loading ? (<h1>Loding...</h1>)
-                    : error ? (<h1>Error while fetching pizzas</h1>)
+                {loading ? <Loader />
+
+                    : error ? (<Error>Error while fetching Pizzas {error}</Error>)
                         : (<Row>
                             {pizzas.map((pizza) => (
                                 <Col md={4}>

@@ -16,7 +16,7 @@ export const registerUserReducer = (state = {}, action) => {
                 error: action.payload
             }
         default:
-            return { state }
+            return state;
     }
 }
 
@@ -40,7 +40,7 @@ export const loginUserReducer = (state = {}, action) => {
                 error: action.payload
             }
         default:
-            return { state }
+            return state;
     }
 
 }
