@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Col, Row, Button } from 'react-bootstrap'
+import { Container, Col, Row } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { AiFillMinusCircle, AiFillPlusCircle, AiFillDelete } from 'react-icons/ai'
 import { addToCard, deleteFromCart } from '../actions/cardAction'

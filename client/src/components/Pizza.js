@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Card, Row, Col, Modal } from 'react-bootstrap'
 import { FaRupeeSign, FaAudioDescription } from 'react-icons/fa'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addToCard } from '../actions/cardAction'
 
 const Pizza = ({ pizza }) => {
