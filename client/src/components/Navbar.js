@@ -26,7 +26,10 @@ const NavBar = () => {
                                             </Dropdown.Toggle>
 
                                             <Dropdown.Menu>
-                                                <Dropdown.Item href="#/action-1">Order</Dropdown.Item>
+                                                <LinkContainer to="/orders">
+                                                    <Dropdown.Item  >Order</Dropdown.Item>
+                                                </LinkContainer>
+
                                                 <Dropdown.Item onClick={() => dispatch(logoutUser())}>Logout</Dropdown.Item>
 
                                             </Dropdown.Menu>
