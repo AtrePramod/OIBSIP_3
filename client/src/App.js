@@ -10,6 +10,7 @@ import CardScreen from "./screens/cardScreen";
 import Register from "./screens/Register";
 import Login from "./screens/Login";
 import OrderScrren from "./screens/OrderScrren";
+import AdminScreen from "./screens/AdminScreen";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <ToolBar />
       <NavBar />
       <Switch>
+        <Route path="/admin" component={AdminScreen} />
         <Route path="/orders" component={OrderScrren} exact />
         <Route path="/login" component={Login} exact />
         <Route path="/register" component={Register} exact />
