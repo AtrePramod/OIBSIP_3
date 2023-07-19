@@ -1,20 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, ButtonGroup, Col, Container, Row } from 'react-bootstrap';
-
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import UserList from '../components/admin/UserList';
 import PizzasList from '../components/admin/PizzasList';
 import AddNewPizza from '../components/admin/AddNewPizza';
 import OrderList from '../components/admin/OrderList';
-import { LinkContainer } from 'react-router-bootstrap';
 
 const AdminScreen = ({ history }) => {
+    const userState = useSelector(state => state.loginUserReducer)
+    const { currentUser } = userState
+    useEffect(() => {
+        if (localStorage.getItem('currentUser') === null || !currentUser.isAdmin) {
+            window.location.href = "/";
+        }
+    })
     return (
         <>
             <Container>
                 <Row>
                     <h1 className='text-center bg-dark text-light p2'>Admin Panel</h1>
-                    <Col md={4}>
+                    <Col md={2}>
                         <ButtonGroup vertical style={{ minHeight: '400px' }}>
                             <Button onClick={() => history.push("/admin/userlist")}> All Users</Button>
                             <Button onClick={() => history.push("/admin/pizzalist")}> All Pizzas</Button>
@@ -23,7 +29,7 @@ const AdminScreen = ({ history }) => {
 
                         </ButtonGroup>
                     </Col>
-                    <Col md={8}>
+                    <Col md={10}>
 
                         <Switch>
                             <Route path="/admin" component={UserList} exact />
