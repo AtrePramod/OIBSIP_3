@@ -20,7 +20,7 @@ const HomeScreen = () => {
                     : error ? (<Error>Error while fetching Pizzas {error}</Error>)
                         : (<Row>
                             {pizzas.map((pizza) => (
-                                <Col md={4}>
+                                <Col md={4} key={pizza.name}>
                                     <Pizza pizza={pizza} />
                                 </Col>
                             ))}
