@@ -51,6 +51,29 @@ router.post('/placeorder', async (req, res) => {
 
     }
 })
+router.post('/placeorders', async (req, res) => {
+    const { subTotal, currentUser, cartItems } = req.body;
+    try {
+        const newOrder = new Order({
+            name: currentUser.name,
+            email: currentUser.email,
+            userid: currentUser._id,
+            orderItems: cartItems,
+            orderAmount: subTotal,
+            shippingAddress: "Nimon 422611",
+
+        })
+        newOrder.save();
+        res.send('Payment Success')
+
+    } catch (error) {
+        res.status(400).json({
+            message: 'something went wrong',
+            error: error.stack
+        })
+
+    }
+})
 
 router.post('/getuserorder', async (res, req) => {
     const { userid } = req.body

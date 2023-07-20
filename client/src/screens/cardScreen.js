@@ -1,16 +1,19 @@
 import React from 'react'
-import { Container, Col, Row } from 'react-bootstrap'
+import { Container, Col, Row, Button } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { AiFillMinusCircle, AiFillPlusCircle, AiFillDelete } from 'react-icons/ai'
 import { addToCard, deleteFromCart } from '../actions/cardAction'
-import CheckOut from '../components/CheckOut'
-
+//import CheckOut from '../components/CheckOut'
+import { placeOrders } from "../actions/orderAction"
 
 const CardScreen = () => {
     const cartState = useSelector(state => state.cartReducer)
     const cartItems = cartState.cartItems;
     const dispatch = useDispatch();
     const subTotal = cartItems.reduce((x, item) => x + item.price, 0)
+    const buttonHandler = () => {
+        dispatch(placeOrders(subTotal));
+    }
 
     return (
         <>
@@ -51,7 +54,7 @@ const CardScreen = () => {
                         <h1>Payment Info</h1>
                         <h4>Sub Total</h4>
                         <h4>Rs : {subTotal} /-</h4>
-                        <CheckOut subTotal={subTotal} />
+                        <Button onClick={buttonHandler}>CheckOut</Button>
                     </Col>
                 </Row>
             </Container>
