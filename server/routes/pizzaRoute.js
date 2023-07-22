@@ -12,4 +12,24 @@ router.get('/getAllPizzas', async (req, res) => {
 
     }
 })
+router.post('/addpizza', async (req, res) => {
+    const { pizza } = req.body;
+    try {
+        const newPizza = new pizzaModel({
+            name: pizza.name,
+            image: pizza.image,
+            varients: ['small', 'medium', 'large'],
+            description: pizza.desc,
+            category: pizza.cate,
+            prices: [pizza.prices]
+
+        })
+        await newPizza.save();
+        res.status(201).send('new pizza added')
+
+    } catch (err) {
+        res.json({ message: err })
+
+    }
+})
 module.exports = router;

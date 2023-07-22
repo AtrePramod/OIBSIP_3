@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import { Form, Button, Col, Row } from 'react-bootstrap'
+import { addPizza } from '../../actions/pizzaAction'
+import { useDispatch, useSelector } from 'react-redux'
+
+import Error from '../Error'
+import Success from '../Success'
+import Loader from '../loader'
 
 const AddNewPizza = () => {
-
+    const dispatch = useDispatch()
     const [name, setName] = useState('');
     const [smallPrice, setSmallPrice] = useState();
     const [largePrice, setLargePrice] = useState();
@@ -11,6 +17,8 @@ const AddNewPizza = () => {
     const [desc, setDesc] = useState('');
     const [cate, setCate] = useState('');
 
+    const addPizzaState = useSelector(state => state.addPizzaReducer)
+    const { loading, error, sucess } = addPizzaState
     const submitForm = (e) => {
         e.preventDefault();
         const pizza = {
@@ -20,7 +28,7 @@ const AddNewPizza = () => {
                 large: largePrice
             }
         }
-        console.log(pizza)
+        dispatch(addPizza(pizza));
 
         setName('');
         setCate("");
@@ -32,7 +40,13 @@ const AddNewPizza = () => {
 
     }
     return (
-        <>
+        <div>
+            {loading && (<Loader />)
+            }
+            {error && (<Error error="Some Thing went wrong " />)
+            }
+            {Success && (<Success success='successfully done' />)
+            }
             <Form onSubmit={submitForm}>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridName">
@@ -76,7 +90,7 @@ const AddNewPizza = () => {
                         </Form.Group>
                     </Row>
                     <Form.Group as={Col} controlId="formGridImage">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label> Image URL </Form.Label>
                         <Form.Control type="text"
                             value={image}
                             onChange={(e) => setImage(e.target.value)}
@@ -106,7 +120,7 @@ const AddNewPizza = () => {
                     Add New
                 </Button>
             </Form>
-        </>
+        </div >
     )
 }
 
