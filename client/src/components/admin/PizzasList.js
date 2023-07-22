@@ -7,6 +7,7 @@ import { AiTwotoneDelete } from "react-icons/ai"
 import Pizza from '../Pizza'
 import Loader from '../loader'
 import Error from '../Error'
+import { Link } from 'react-router-dom'
 
 const PizzasList = () => {
 
@@ -42,7 +43,12 @@ const PizzasList = () => {
                                         Large = {pizza.prices[0]['large']}
                                     </td>
                                     <td>{pizza.category}</td>
-                                    <td><FiEdit /> &nbsp; <AiTwotoneDelete /></td>
+                                    <td>
+                                        <Link to={`/admin/editpizza/${pizza._id}`}>  <FiEdit /></Link>
+
+                                        &nbsp;
+                                        <AiTwotoneDelete />
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

@@ -36,3 +36,23 @@ export const addPizzaReducer = (state = {}, action) => {
         default: return state
     }
 }
+
+export const editPizzaByIdReducer = (state = {}, action) => {
+    switch (action.type) {
+        case 'GET_PIZZASBYID_REQUEST':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'GET_PIZZASBYID_SUCCESS':
+            return {
+                pizza: action.payload,
+                loading: false
+            }
+        case 'GET_PIZZASBYID_FAIL':
+            return {
+                error: action.payload
+            }
+        default: return state
+    }
+}

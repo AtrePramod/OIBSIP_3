@@ -6,6 +6,7 @@ import UserList from '../components/admin/UserList';
 import PizzasList from '../components/admin/PizzasList';
 import AddNewPizza from '../components/admin/AddNewPizza';
 import OrderList from '../components/admin/OrderList';
+import EditPizza from '../components/admin/EditPizza';
 
 const AdminScreen = ({ history }) => {
     const userState = useSelector(state => state.loginUserReducer)
@@ -35,6 +36,7 @@ const AdminScreen = ({ history }) => {
                             <Route path="/admin" component={UserList} exact />
                             <Route path="/admin/userlist" component={UserList} exact />
                             <Route path="/admin/pizzalist" component={PizzasList} exact />
+                            <Route path="/admin/editpizza/:pizzaId" component={EditPizza} exact />
                             <Route path="/admin/addnewpizza" component={AddNewPizza} exact />
                             <Route path="/admin/orderlist" component={OrderList} exact />
                         </Switch>

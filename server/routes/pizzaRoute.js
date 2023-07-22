@@ -12,6 +12,8 @@ router.get('/getAllPizzas', async (req, res) => {
 
     }
 })
+
+
 router.post('/addpizza', async (req, res) => {
     const { pizza } = req.body;
     try {
@@ -32,4 +34,17 @@ router.post('/addpizza', async (req, res) => {
 
     }
 })
+
+router.post('/getpizzabyid', async (req, res) => {
+    const pizzaId = req.body.pizzaId
+    try {
+        const pizza = await pizzaModel.findOne({ _id: pizzaId })
+        res.send(pizza)
+    } catch (err) {
+        res.json({ message: err })
+
+    }
+})
+
+
 module.exports = router;
