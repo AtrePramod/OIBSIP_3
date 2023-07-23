@@ -7,6 +7,7 @@ import { AiTwotoneDelete } from "react-icons/ai"
 import Pizza from '../Pizza'
 import Loader from '../loader'
 import Error from '../Error'
+import Success from '../Success'
 import { Link } from 'react-router-dom'
 
 const PizzasList = () => {

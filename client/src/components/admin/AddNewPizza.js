@@ -17,7 +17,7 @@ const AddNewPizza = () => {
     const [desc, setDesc] = useState('');
     const [cate, setCate] = useState('');
 
-    const addPizzaState = useSelector(state => state.addPizzaReducer)
+    const addPizzaState = useSelector((state) => state.addPizzaReducer)
     const { loading, error, sucess } = addPizzaState
     const submitForm = (e) => {
         e.preventDefault();

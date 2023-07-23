@@ -35,3 +35,17 @@ export const getPizzaById = (pizzaId) => async (dispatch) => {
 
     }
 }
+
+export const updatePizza = (updatedPizza) => async (dispatch) => {
+    dispatch({ type: 'UPDATED_PIZZABYID_REQUEST' })
+    try {
+        const res = await axios.post('/api/pizzas/updatepizza', { updatedPizza })
+
+        dispatch({ type: 'UPDATED_PIZZABYID_SUCCESS', payload: res.data })
+        window.location.href = '/admin/pizzalist'
+
+    } catch (error) {
+        dispatch({ type: 'UPDATED_PIZZABYID_FAIL', payload: error });
+
+    }
+}
