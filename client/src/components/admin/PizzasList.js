@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Image, Table } from 'react-bootstrap'
-import { getAllPizzas } from '../../actions/pizzaAction'
+import { deletePizza, getAllPizzas } from '../../actions/pizzaAction'
 import { FiEdit } from "react-icons/fi"
 import { AiTwotoneDelete } from "react-icons/ai"
 import Pizza from '../Pizza'
@@ -45,10 +45,13 @@ const PizzasList = () => {
                                     </td>
                                     <td>{pizza.category}</td>
                                     <td>
-                                        <Link to={`/admin/editpizza/${pizza._id}`}>  <FiEdit /></Link>
+                                        <Link to={`/admin/editpizza/${pizza._id}`}>
+                                            <FiEdit />
+                                        </Link>
 
                                         &nbsp;
-                                        <AiTwotoneDelete />
+                                        <AiTwotoneDelete style={{ color: 'red', cursor: 'pointer' }}
+                                            onClick={() => { dispatch(deletePizza(pizza._id)) }} />
                                     </td>
                                 </tr>
                             ))}

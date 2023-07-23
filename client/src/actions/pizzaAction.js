@@ -1,4 +1,6 @@
 import axios from 'axios'
+import swal from 'sweetalert';
+
 export const getAllPizzas = () => async (dispatch) => {
     dispatch({ type: 'GET_PIZZAS_REQUEST' })
     try {
@@ -46,6 +48,20 @@ export const updatePizza = (updatedPizza) => async (dispatch) => {
 
     } catch (error) {
         dispatch({ type: 'UPDATED_PIZZABYID_FAIL', payload: error });
+
+    }
+}
+export const deletePizza = (pizzaId) => async (dispatch) => {
+
+    try {
+        const res = await axios.post('/api/pizzas/deletepizza', { pizzaId })
+
+        swal("Good job!", "Pizza Deleted Success!", "success");
+        window.location.href = "/admin/pizzalist"
+        console.log(res)
+
+    } catch (error) {
+        swal("Somethings Else", "Don't Pizza Delete!", "error");
 
     }
 }
