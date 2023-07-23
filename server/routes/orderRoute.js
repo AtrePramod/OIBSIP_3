@@ -75,7 +75,7 @@ router.post('/placeorders', async (req, res) => {
     }
 })
 
-router.post('/getuserorder', async (res, req) => {
+router.post('/getuserorder', async (req, res) => {
     const { userid } = req.body
     try {
         const orders = await Order.find({ userid }).sort({ _id: "-1" })
@@ -88,6 +88,33 @@ router.post('/getuserorder', async (res, req) => {
     }
 
 })
+router.get('/alluserorder', async (req, res) => {
+    try {
+        const orders = await Order.find({})
+        res.status(200).send(orders)
+    } catch (error) {
+        res.status(400).json({
+            message: 'Something went wrong',
+            error: error.stack
+        })
+    }
 
+})
+
+router.post('/deliverorder', async (req, res) => {
+    const orderid = req.body.orderid
+    try {
+        const order = await Order.findOne({ _id: orderid })
+        order.isDelivered = true;
+        await order.save();
+        res.status(200).send("Order deliver success")
+    } catch (error) {
+        res.status(400).json({
+            message: 'Something went wrong',
+            error: error.stack
+        })
+    }
+
+})
 
 module.exports = router

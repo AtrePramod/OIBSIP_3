@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { getAllPizzaReducer, addPizzaReducer, editPizzaByIdReducer, updatePizzaByIdReducer } from './reducers/pizzaReducer'
 import { cartReducer } from './reducers/cartReducer'
 import { registerUserReducer, loginUserReducer } from './reducers/userReducer'
-import { placeOrderReducer, getUserOrdersReducer } from './reducers/PlaceOrderReducer'
+import { placeOrderReducer, getUserOrdersReducer, allUserOrdersReducer } from './reducers/PlaceOrderReducer'
 
 
 
@@ -23,7 +23,8 @@ const rootReducer = combineReducers({
     getUserOrdersReducer: getUserOrdersReducer,
     addPizzaReducer: addPizzaReducer,
     editPizzaByIdReducer: editPizzaByIdReducer,
-    updatePizzaByIdReducer: updatePizzaByIdReducer
+    updatePizzaByIdReducer: updatePizzaByIdReducer,
+    allUserOrdersReducer: allUserOrdersReducer
 
 
 })
